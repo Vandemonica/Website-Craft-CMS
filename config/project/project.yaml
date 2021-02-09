@@ -1,0 +1,26 @@
+dateModified: 1612851131
+email:
+  fromEmail: ivanxirko1987@gmail.com
+  fromName: Sinopview
+  transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+system:
+  edition: solo
+  live: true
+  name: Sinopview
+  schemaVersion: 3.6.1
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

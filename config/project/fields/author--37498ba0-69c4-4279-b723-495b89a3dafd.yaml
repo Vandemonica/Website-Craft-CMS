@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: f9485060-f9ef-404b-8ba4-315216539b24
+handle: author
+instructions: ''
+name: Author
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: 'Content Author'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

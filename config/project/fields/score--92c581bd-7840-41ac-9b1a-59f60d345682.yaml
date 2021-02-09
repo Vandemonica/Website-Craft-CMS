@@ -1,0 +1,19 @@
+contentColumnType: 'decimal(4,2)'
+fieldGroup: f9485060-f9ef-404b-8ba4-315216539b24
+handle: score
+instructions: 'Content public score from 1 to 10 (can be decimal) eg: 5.86, 8.00, etc'
+name: Score
+searchable: false
+settings:
+  decimals: '2'
+  defaultValue: null
+  max: '10'
+  min: '0'
+  prefix: null
+  previewCurrency: ''
+  previewFormat: decimal
+  size: null
+  suffix: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

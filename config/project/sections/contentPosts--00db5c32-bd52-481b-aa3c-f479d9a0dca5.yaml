@@ -1,0 +1,11 @@
+enableVersioning: true
+handle: contentPosts
+name: 'Content posts'
+propagationMethod: all
+siteSettings:
+  36134da6-fef0-4b3a-997c-5f5f9a6897f6:
+    enabledByDefault: true
+    hasUrls: true
+    template: content/_entry-post
+    uriFormat: 'content/{slug}'
+type: channel

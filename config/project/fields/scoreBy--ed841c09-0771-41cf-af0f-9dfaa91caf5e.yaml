@@ -1,0 +1,19 @@
+contentColumnType: integer(10)
+fieldGroup: f9485060-f9ef-404b-8ba4-315216539b24
+handle: scoreBy
+instructions: 'Number of how many people scored eg:5000, 4624, etc'
+name: 'Score by'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '0'
+  prefix: null
+  previewCurrency: ''
+  previewFormat: decimal
+  size: null
+  suffix: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

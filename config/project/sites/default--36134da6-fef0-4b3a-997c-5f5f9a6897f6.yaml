@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en
+name: Sinopview
+primary: true
+siteGroup: bbfea3ad-f432-494d-b3cd-72ee56f78a84
+sortOrder: 1
