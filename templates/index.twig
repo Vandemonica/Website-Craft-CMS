@@ -3,6 +3,8 @@
 {% block content %}
 
   {% set more = currentSite.baseUrl~'content' %}
+  {% set topViews = craft.entryCount.entries.limit(4) %}
+  {% set recommend = craft.entries.section('contentPosts')|sort((a,b) => b.score <=> a.score) %}
 
   <div style="background-image: url( '{{ entry.bannerImage.one().url }}' ); background-position: center; background-repeat: no-repeat; background-size: cover;" class="text-center">
     <div style="background-color: rgba(0, 0, 0, 0.7)" class="text-white pt-16 md:pt-20 lg:pt-24">
@@ -16,8 +18,31 @@
     </div>
   </div>
   <div class="bg-black bg-opacity-20 border-gray-500 border-b md:border-r md:border-l p-2 md:mx-20 lg:mx-60">
-    <div>
-      some req here..
+    <div class="my-2">
+      <h1 class="m-0.5 mt-4 lg:mx-5 text-lg md:text-xl lg:text-2xl">Most Viewed</h1>
+      <div class="grid grid-cols-2 lg:grid-cols-4">
+        {% for item in topViews %}
+            {%
+              include "components/_cover.twig" with{
+                'content': item,
+                'margin': 'm-0.5 md:mx-auto',
+              }
+            %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="my-2">
+      <h1 class="m-0.5 mt-4 lg:mx-5 text-lg md:text-xl lg:text-2xl">Recommended</h1>
+      <div class="grid grid-cols-2 lg:grid-cols-4">
+        {% for item in recommend|slice(0, 4) %}
+            {%
+              include "components/_cover.twig" with{
+                'content': item,
+                'margin': 'm-0.5 md:mx-auto',
+              }
+            %}
+        {% endfor %}
+      </div>
     </div>
     <div class="mt-10 mb-4 text-center">
       <a href="{{ more }}" class="bg-gray-700 px-6 py-0.5 rounded-md text-white text-md md:text-lg lg:text-xl hover:bg-gray-200 hover:text-black">Browse More</a>

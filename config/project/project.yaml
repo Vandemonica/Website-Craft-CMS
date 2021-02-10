@@ -1,4 +1,4 @@
-dateModified: 1612851131
+dateModified: 1612916136
 email:
   fromEmail: ivanxirko1987@gmail.com
   fromName: Sinopview
@@ -8,6 +8,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  entry-count:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
   redactor:
     edition: standard
     enabled: true
@@ -16,8 +20,9 @@ system:
   edition: solo
   live: true
   name: Sinopview
+  retryDuration: null
   schemaVersion: 3.6.1
-  timeZone: America/Los_Angeles
+  timeZone: Asia/Jakarta
 users:
   allowPublicRegistration: false
   defaultGroup: null

@@ -1,0 +1,16 @@
+<a href="{{ content.url }}" class="group relative coverImage bg-gray-300 overflow-hidden {{ margin }}">
+  <img class="w-full object-cover" src="{% if content.coverImage is not empty %} {{ content.coverImage.one().url }} {% endif %}" alt="Cover image">
+  <div class="absolute transition duration-300 top-0 left-0 w-full h-full bg-black bg-opacity-50 group-hover:bg-opacity-0">
+    <div class="absolute w-full text-sm md:text-base lg:text-lg py-1 text-white bottom-0 px-2 group-hover:text-blue-300 group-hover:bg-black group-hover:bg-opacity-80">
+      <p class="font-bold">{{ content.title }}</p>
+      <p class="font-sans text-sm md:text-base lg:text-lg">
+        <span class="font-bold text-md md:text-lg lg:text-xl">&#9734;</span>
+        {% if content.score is not null %}
+          {{ content.score }}
+        {% else %}
+          n/a
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</a>

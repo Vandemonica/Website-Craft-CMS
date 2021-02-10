@@ -1,7 +1,9 @@
 {% extends 'layout/_basic_layout' %}
 
 {% block content %}
+
   {% set infoText = 'inline text-sm md:text-md lg:text-lg' %}
+  {% do craft.entryCount.increment(entry.id) %}
 
   <div class="text-black pt-16 md:pt-20 lg:pt-24 md:mx-6 lg:mx-40">
     <div class="mx-auto font-serif font-medium whitespace-nowrap w-min border-b border-black text-3xl md:text-4xl lg:text-5xl">{{ entry.title }}</div>
