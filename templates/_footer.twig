@@ -1,28 +1,24 @@
-{% set base = currentSite.baseUrl ~ 'content?category=' %}
-{%
-  set topCat = [
-    {'genre': 'action', 'link': base ~ 'action'},
-    {'genre': 'comedy', 'link': base ~ 'comedy'},
-    {'genre': 'fantasy', 'link': base ~ 'fantasy'},
-    {'genre': 'adventure', 'link': base ~ 'adventure'},
-    {'genre': 'sci-fi', 'link': base ~ 'sci-fi'},
-  ]
-%}
+{% set topGenres = craft.categories.group('genre').limit(5) %}
 
-<div class="w-full mt-16 md:mt-28 lg:mt-40">
-  <div class="bg-gray-700 border-t border-gray-800 text-white py-4 px-4 md:px-16 lg:px-40 text-xs md:text-sm lg:text-base">
-    <div class="text-sm md:text-base lg:text-lg border-b border-white whitespace-nowrap w-min mb-2">Top Genre's:</div>
-    <div class="grid grid-cols-2">
-      {% for item in topCat %}
-        <a class="ml-2 w-min whitespace-nowrap capitalize hover:text-blue-500" href="{{item.link}}">{{ item.genre }}</a>
-      {% endfor %}
+<div class="w-full h-auto mt-10 md:mt-20 lg:mt-32" style="background-color: #212121;">
+  <div class="grid lg:grid-cols-2 px-2 md:px-10 lg:px-20 pt-4 pb-8">
+    <div class="my-4 px-2">
+      <div class="text-white font-medium text-lg md:text-xl lg:text-2xl mb-3">
+        <h1 class="inline-block mr-2">Most Popular Genre's</h1>
+        <a href="{{ currentSite.baseUrl ~ 'genres' }}" class="border border-white px-2 inline-block text-xs md:text-sm lg:text-base hover:bg-white hover:text-black">Views all</a>
+      </div>
+      <ul class="grid grid-cols-2 ml-0.5 ">
+        {% for item in topGenres %}
+          <li><a class="text-gray-200 text-sm md:text-base lg:text-lg capitalize hover:text-blue-500 hover:underline" href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="my-4 px-2">
+      {% include 'components/_search-bar.twig' %}
     </div>
   </div>
-  <div class="bg-gray-800 border-t border-gray-600 text-gray-400 pt-2 pb-6 px-2 md:px-12 lg:px-32 text-xs md:text-sm lg:text-base">
-    <i>Sincerely with Hope, Love, Faith, and Luck</i>
-    <div class="ml-4">
-        <p>Copyright &#xa9; 2021</p>
-        <p>Website Design & Development by Ivan Nircahya</p>
-    </div>
+  <div class="w-11/12 text-gray-300 py-4 mx-auto text-center">
+    <p class="text-xs md:text-sm py-1 border-t">Copyright &copy; 2021 All rights reserved Sinopview</p>
+    <p class="text-xs md:text-sm">Design & Development by Ivan Nircahya</p>
   </div>
 </div>

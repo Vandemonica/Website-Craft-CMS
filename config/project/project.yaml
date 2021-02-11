@@ -1,4 +1,4 @@
-dateModified: 1612916136
+dateModified: 1613022894
 email:
   fromEmail: ivanxirko1987@gmail.com
   fromName: Sinopview
@@ -12,6 +12,9 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.0.0
+    settings:
+      ignoreIpAddresses: ''
+      ignoreLoggedInUsers: '1'
   redactor:
     edition: standard
     enabled: true
