@@ -1,0 +1,24 @@
+{% extends '_layouts/base' %}
+
+{% block content %}
+
+  <div class="pt-20 md:mx-20 lg:mx-60">
+    <div class="bg-gray-600 p-2">
+      <form action="{{ url('content') }}">
+
+        <input type="text" name="search" placeholder="Keyword for search" class="w-full sm:w-2/3 px-2 py-0.5 border border-white outline-none">
+
+        <div class="block my-4 sm:ml-4 sm:inline">
+          <label class="text-white py-0.5" for="cat">Genre</label>
+          <select class="outline-none py-0.5" name="cat">
+            <option value="">test</option>
+          </select>
+        </div>
+
+        <button class="block border border-white text-white">Submit Search</button>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

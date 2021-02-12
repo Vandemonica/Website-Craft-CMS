@@ -14,7 +14,8 @@
       </ul>
     </div>
     <div class="my-4 px-2">
-      {% include 'components/_search-bar.twig' %}
+      {% include '_includes/search-bar.twig' %}
+      <a href="{{ currentSite.baseUrl ~ 'search' }}" class="text-blue-600 text-sm md:text-base lg:text-lg hover:underline hover:text-blue-400">Advanced Search</a>
     </div>
   </div>
   <div class="w-11/12 text-gray-300 py-4 mx-auto text-center">

@@ -1,0 +1,20 @@
+{% set home = currentSite.baseUrl %}
+{%
+  set navbar = [
+    {'page': 'Home', 'url': home},
+    {'page': 'Search', 'url': home~'search'},
+    {'page': 'Genre', 'url': home~'genres'},
+    {'page': 'About', 'url': home~'about'},
+  ]
+%}
+
+<div class="fixed z-30 w-full bg-black bg-opacity-90 text-white py-3 px-2 md:px-10 lg:px-20">
+  <div class="inline italic float-left text-xl md:text-2xl lg:text-3xl">
+    <a class="transition duration-300 hover:text-blue-500" href="{{ home }}">{{ siteName }}</a>
+  </div>
+  <div class="hidden md:inline mt-1 float-right">
+    {% for item in navbar %}
+      <a class="p-2 text-md md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}">{{item.page}}</a>
+    {% endfor %}
+  </div>
+</div>
