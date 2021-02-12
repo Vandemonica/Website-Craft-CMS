@@ -1,10 +1,11 @@
 {% extends '_layouts/base' %}
 
-{% block content %}
 
-  {% set more = currentSite.baseUrl~'content' %}
-  {% set topViews = craft.entryCount.entries.limit(4).all() %}
-  {% set recommend = craft.entries.section('contentPosts').all()|sort((a,b) => b.score <=> a.score) %}
+{% set more = currentSite.baseUrl~'content' %}
+{% set topViews = craft.entryCount.entries.limit(4).all() %}
+{% set recommend = craft.entries.section('contentPosts').all()|sort((a,b) => b.score <=> a.score) %}
+
+{% block content %}
 
   <div style="background-image: url( '{{ entry.bannerImage.one().url }}' ); background-position: center; background-repeat: no-repeat; background-size: cover;" class="text-center">
     <div style="background-color: rgba(0, 0, 0, 0.7)" class="text-white pt-16 md:pt-20 lg:pt-24">

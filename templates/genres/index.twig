@@ -1,8 +1,9 @@
 {% extends '_layouts/base' %}
 
-{% block content %}
 
-  {% set allGenres = craft.categories.group('genre').all() %}
+{% set allGenres = craft.categories.group('genre').all() %}
+
+{% block content %}
 
   <div class="mx-4 md:mx-16 lg:mx-40 pt-20">
     <h1 class="text-xl md:text-2xl lg:text-3xl my-4">List of all Genres</h1>

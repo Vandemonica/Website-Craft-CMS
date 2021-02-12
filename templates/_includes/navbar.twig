@@ -1,4 +1,7 @@
 {% set home = currentSite.baseUrl %}
+{% set mobile = 'hidden absolute -bottom-24 text-center bg-black bg-opacity-90 w-full' %}
+{% set desktop = 'md:static md:w-auto md:bg-transparent md:inline md:mt-1' %}
+
 {%
   set navbar = [
     {'page': 'Home', 'url': home},
@@ -8,13 +11,31 @@
   ]
 %}
 
-<div class="fixed z-30 w-full bg-black bg-opacity-90 text-white py-3 px-2 md:px-10 lg:px-20">
-  <div class="inline italic float-left text-xl md:text-2xl lg:text-3xl">
+<div class="fixed z-30 w-full bg-black bg-opacity-90 text-white py-3">
+  <div class="inline italic float-left text-xl md:text-2xl lg:text-3xl pl-2 md:pl-10 lg:pl-20">
     <a class="transition duration-300 hover:text-blue-500" href="{{ home }}">{{ siteName }}</a>
   </div>
-  <div class="hidden md:inline mt-1 float-right">
+  <div id="hamburger" class="hamburger cursor-pointer inline md:hidden mt-1 float-right">
+    <span id="hamone"></span>
+    <span id="hamtwo"></span>
+    <span id="hamthree"></span>
+  </div>
+  <!-- desktop -->
+  <div id="droppy" class="{{ mobile }} {{ desktop }} float-right md:pr-10 lg:pr-20">
     {% for item in navbar %}
-      <a class="p-2 text-md md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}">{{item.page}}</a>
+      <a class="block md:inline md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}">{{ item.page }}</a>
     {% endfor %}
   </div>
+  <!-- end desktop -->
+
+  <!-- untuk mobile -->
+  <!-- <div class="absolute w-full -bottom-24 text-center bg-black bg-opacity-90 text-white">
+    {% for item in navbar %}
+      <a class="block md:hidden" href="{{item.url}}">{{ item.page }}</a>
+    {% endfor %}
+  </div> -->
+  <!-- end mobile -->
 </div>
+
+
+<script src="{{ home }}assets/js/hamburger.js"></script>
