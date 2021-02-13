@@ -17,7 +17,7 @@
           <select class="outline-none py-0.5 cursor-pointer" name="category">
             <option value="">Any</option>
             {% for item in optGenre %}
-              <option value="{{ item.title }}">{{ item.title }}</option>
+              <option value="{{ item.title|replace({' ': '-'}) }}">{{ item.title }}</option>
             {% endfor %}
           </select>
         </div>
