@@ -1,4 +1,4 @@
-enableVersioning: true
+enableVersioning: false
 handle: contentPosts
 name: 'Content posts'
 propagationMethod: all

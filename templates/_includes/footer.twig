@@ -1,4 +1,4 @@
-{% set topGenres = craft.categories.group('genre').limit(5) %}
+{% set topGenres = craft.categories.group('genre').limit(5).all() %}
 
 <div class="w-full h-auto mt-10 md:mt-20 lg:mt-32" style="background-color: #212121;">
   <div class="grid lg:grid-cols-2 px-2 md:px-10 lg:px-20 pt-4 pb-8">

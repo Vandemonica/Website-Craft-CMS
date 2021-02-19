@@ -1,4 +1,4 @@
-enableVersioning: true
+enableVersioning: false
 handle: about
 name: About
 propagationMethod: all

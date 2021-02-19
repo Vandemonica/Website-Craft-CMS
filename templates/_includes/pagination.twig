@@ -1,0 +1,25 @@
+{% set pagBtn = 'inline-block border border-gray-400 w-8 h-8 md:w-10 md:h-10 p-1 text-md md:text-lg lg:text-xl hover:bg-black hover:text-white' %}
+
+
+
+<a class="{{ pagBtn }}" href="{{ paginate.firstUrl }}">&#8920;</a>
+
+{% if paginate.prevUrl %} <a class="{{ pagBtn }}" href="{{ paginate.prevUrl }}">&#8810;</a> {% endif %}
+
+{% set prevBtnLen = paginate.currentPage == paginate.totalPages ? 2 : 1 %}
+
+{% for page, url in paginate.getPrevUrls(prevBtnLen) %}
+  <a class="{{ pagBtn }}" href="{{ url }}">{{ page }}</a>
+{% endfor %}
+
+<span class="{{ pagBtn }} bg-black text-white cursor-pointer">{{ paginate.currentPage }}</span>
+
+{% set nextBtnLen = paginate.currentPage == 1 ? 2 : 1 %}
+
+{% for page, url in paginate.getNextUrls(nextBtnLen) %}
+  <a class="{{ pagBtn }}" href="{{ url }}">{{ page }}</a>
+{% endfor %}
+
+{% if paginate.nextUrl %} <a class="{{ pagBtn }}" href="{{ paginate.nextUrl }}">&#8811;</a> {% endif %}
+
+<a class="{{ pagBtn }}" href="{{ paginate.lastUrl }}">&#8921;</a>

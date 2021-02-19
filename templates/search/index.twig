@@ -1,7 +1,7 @@
 {% extends '_layouts/base' %}
 
 
-{% set optGenre = craft.categories.group('genre') %}
+{% set optGenre = craft.categories.group('genre').all() %}
 
 {% block content %}
 

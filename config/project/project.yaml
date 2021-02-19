@@ -1,10 +1,31 @@
-dateModified: 1613022894
+dateModified: 1613662492
 email:
   fromEmail: ivanxirko1987@gmail.com
   fromName: Sinopview
   transportType: craft\mail\transportadapters\Sendmail
 plugins:
+  disqus:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+    settings:
+      customLogin: false
+      disqusPublicKey: ''
+      disqusSecretKey: ''
+      disqusShortname: sinoptalk
+      loginButton: ''
+      loginHeight: 400
+      loginIcon: ''
+      loginLogoutUrl: ''
+      loginName: SinopView
+      loginUrl: ''
+      loginWidth: 800
+      useSSO: false
   dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  eager-beaver:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
@@ -24,7 +45,7 @@ system:
   live: true
   name: Sinopview
   retryDuration: null
-  schemaVersion: 3.6.1
+  schemaVersion: 3.6.4
   timeZone: Asia/Jakarta
 users:
   allowPublicRegistration: false
