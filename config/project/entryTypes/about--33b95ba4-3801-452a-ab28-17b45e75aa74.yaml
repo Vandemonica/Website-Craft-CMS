@@ -4,6 +4,9 @@ fieldLayouts:
       -
         elements:
           -
+            heading: 'Your name/company name'
+            type: craft\fieldlayoutelements\Heading
+          -
             fieldUid: 05483dc7-c41a-4db3-af9d-a6bec723a610
             instructions: null
             label: null
@@ -12,6 +15,9 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
+          -
+            heading: 'Paragraph containing you/company information'
+            type: craft\fieldlayoutelements\Heading
           -
             fieldUid: a561ed63-1cbe-464d-b414-6a5e64025e36
             instructions: null
@@ -28,8 +34,8 @@ fieldLayouts:
             class: null
             disabled: false
             id: null
-            instructions: null
-            label: null
+            instructions: ''
+            label: __blank__
             max: null
             min: null
             name: null

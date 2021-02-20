@@ -14,6 +14,7 @@
 
 {% set postQuery = craft.entries
   .section('contentPosts')
+  .with(['coverImage'])
   .relatedTo(category)
   .search(search)
   .limit(3)
@@ -25,20 +26,23 @@
     {% include "_includes/search-bar" %}
     {% if search is not empty %}
       <div class="text-gray-300 my-2 text-sm md:text-base lg:text-lg">
-        Search result for: {{ '"' ~ search ~ '"' }}
+        Search result for: {{ '"' ~ search ~ '"' }}, {{ postQuery|length }} title found
       </div>
     {% endif %}
   </div>
 
-  {% if postQuery|length %}
+  {% paginate postQuery as posts %}
 
-    {% paginate postQuery as posts %}
+  {% if postQuery|length and not (craft.app.request.queryParam('page') > paginate.totalPages) %}
+
     <div class="flex justify-center mx-auto">
       <div class="grid md:grid-cols-3 gap-x-12 gap-y-12 justify-between mx-4">
         {% for item in posts %}
+          {% set img = item.coverImage[0] ?? null %}
           {%
             include "_includes/cover" with{
               'content': item,
+              'cover': img,
               'margin': 'm-auto',
             }
           %}
@@ -49,16 +53,15 @@
     <div class="mt-6 text-center space-x-2">
       {% include "_includes/pagination" %}
     </div>
-  
+
+  {% elseif postQuery|length == 0 %}
+
+    {% include '_includes/minicard' with{'message': "Sorry, but There's are no titles match with your search"} %}
 
   {% else %}
 
-    <div class="pt-20 pb-16 md:pb-20 lg:pb-32 mx-2 md:mx-20 lg:mx-60">
-      <div class="bg-gray-200 text-lg md:text-xl lg:text-2xl py-6 px-2 shadow-md text-center">
-        Sorry, but There's are no titles match with your search >_<
-      </div>
-    </div>
-    
+    {% include '_includes/minicard' with{'message': "Its look like something went wrong"} %}
+
   {% endif %}
 
 
