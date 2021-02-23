@@ -26,7 +26,9 @@
     {% include "_includes/search-bar" %}
     {% if search is not empty %}
       <div class="text-gray-300 my-2 text-sm md:text-base lg:text-lg">
-        Search result for: {{ '"' ~ search ~ '"' }}, {{ postQuery|length }} title found
+        <div class="block lg:inline">Search result for: {{ '"' ~ search ~ '"' }}</div>
+        <div class="block lg:inline">{{ category ? 'and Genre: ' ~ '"' ~ category ~ '"' : '' }}</div>
+        <div class="block lg:inline">{{ postQuery|length }} title found</div>
       </div>
     {% endif %}
   </div>
@@ -38,11 +40,9 @@
     <div class="flex justify-center mx-auto">
       <div class="grid md:grid-cols-3 gap-x-12 gap-y-12 justify-between mx-4">
         {% for item in posts %}
-          {% set img = item.coverImage[0] ?? null %}
           {%
             include "_includes/cover" with{
               'content': item,
-              'cover': img,
               'margin': 'm-auto',
             }
           %}
@@ -60,7 +60,7 @@
 
   {% else %}
 
-    {% include '_includes/minicard' with{'message': "Its look like something went wrong"} %}
+    {% include '_includes/minicard' with{'message': "It's look like something went wrong"} %}
 
   {% endif %}
 

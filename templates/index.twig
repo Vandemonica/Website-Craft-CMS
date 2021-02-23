@@ -1,69 +1,99 @@
 {% extends '_layouts/base' %}
 
-{% 
-  set topViews = craft.entryCount.entries
-  .with(['coverImage'])
-  .limit(4)
-  .all() 
-%}
-{%
-  set queryEntry = craft.entries.section('homepage')
-  .with(['featuredContent'])
-  .all()
-%}
-
+{# see : https://nystudio107.com/blog/speed-up-your-craft-cms-templates-with-eager-loading #}
+{% do craft.app.elements.eagerLoadElements(
+  className(entry),
+  [entry],
+  ['featuredContent']
+) %}
 
 {% block content %}
 
-  <div style="background-image: url( '{{ entry.bannerImage.one().url }}' ); background-position: center; background-repeat: no-repeat; background-size: cover;" class="text-center">
+  <div style="background-image: url( '{{ entry.bannerImage.one().url ?? null }}' ); background-position: center; background-repeat: no-repeat; background-size: cover;" class="text-center">
     <div style="background-color: rgba(0, 0, 0, 0.7)" class="text-white pt-16 md:pt-20 lg:pt-24">
       <div class="my-4">
         {% include "_includes/search-bar" %}
       </div>
-      <div class="bg-black bg-opacity-40 border-gray-500 border-t md:border-r md:border-l p-6 mt-10 md:mx-20 md:mt-16 lg:mx-60 lg:mt-28">
-        <div class="mt-4 md:mt-6 lg:mt-10 font-bold text-2xl md:text-3xl lg:text-5xl">{{ queryEntry[0].mainHeader }}</div>
-        <div class="mt-2 md:mt-4 lg:mt-6 mb-4 md:mb-6 lg:mb-10 text-md md:text-lg lg:text-xl">{{ queryEntry[0].paragraph }}</div>
+      <div class="bg-black bg-opacity-40 border-gray-500 border-t md:border-r md:border-l p-6 mt-10 md:mx-20 md:mt-16 lg:mx-32 lg:mt-28 xl:mx-60">
+        <div class="mt-4 md:mt-6 lg:mt-10 font-bold text-2xl md:text-3xl lg:text-5xl">{{ entry.mainHeader }}</div>
+        <div class="mt-2 md:mt-4 lg:mt-6 mb-4 md:mb-6 lg:mb-10 text-md md:text-lg lg:text-xl">{{ entry.paragraph }}</div>
       </div>
     </div>
   </div>
 
-  <div class="bg-black bg-opacity-20 border-gray-500 border-b md:border-r md:border-l p-2 md:mx-20 lg:mx-60">
+  <div class="bg-black bg-opacity-20 space-y-4 py-6 text-center border-gray-500 border-b md:border-r md:border-l md:mx-20 lg:mx-32 xl:mx-60">
 
-    
-    {% for entry in queryEntry[0].featuredContent %}
-      <div class="my-2">
-        <h1 class="m-0.5 mt-4 lg:mx-5 text-xl md:text-2xl lg:text-3xl">{{ entry.header }}</h1>
-        <div class="grid grid-cols-2 lg:grid-cols-4">
-          {% set post = entry.contentPost.all() %}
-          {% for item in post %}
-            {% set img = item.coverImage[0] ?? null %}
-            {%
-              include "_includes/cover" with{
-                'content': item,
-                'cover': img,
-                'margin': 'm-0.5 md:mx-auto',
-              }
-            %}
-          {% endfor %}        
-        </div>
-      </div>
+    {% for contentBlock in entry.homePosts.all() %}
+
+
+      {% if contentBlock.type == "featuredPost" %}
+        {%
+          include "_includes/home_basic" with{
+            'posts': contentBlock.contentPost.with(['coverImage']).all()
+          }
+        %}
+      {% endif %}
+
+
+      {% if contentBlock.type == "paragraph" %}
+        {% include '_includes/home_paragraph' %}
+      {% endif %}
+
+
+      {% if contentBlock.type == "recentPost" %}
+        {%
+          include '_includes/home_basic' with{
+            'posts': craft.entries.section('contentPosts')
+                      .with(['coverImage'])
+                      .limit(contentBlock.postLimit)
+                      .all()
+          }
+        %}
+      {% endif %}
+
+
+      {% if contentBlock.type == "mostViewedPost" %}
+        {%
+          include '_includes/home_basic' with{
+                    'posts': craft.entryCount.entries
+                    .with(['coverImage'])
+                    .limit(contentBlock.postLimit)
+                    .all()
+          }
+        %}
+      {% endif %}
+
+
+      {% if contentBlock.type == "specialPost" %}
+        {%
+          include '_includes/home_special' with{
+            'items': contentBlock.contentPost.with(['coverImage']).all()
+          }
+        %}
+      {% endif %}
+
+
     {% endfor %}
+
+
+    {#
+      
+
 
     <div class="my-2">
       <h1 class="m-0.5 mt-4 lg:mx-5 text-xl md:text-2xl lg:text-3xl">Most Viewed</h1>
       <div class="grid grid-cols-2 lg:grid-cols-4">
         {% for item in topViews %}
-          {% set img = item.coverImage[0] ?? null %}
           {%
             include "_includes/cover" with{
               'content': item,
-              'cover': img,
               'margin': 'm-0.5 md:mx-auto',
             }
           %}
         {% endfor %}
       </div>
     </div>
+    #}
 
     <div class="mt-10 mb-4 text-center">
       <a href="{{ currentSite.baseUrl~'content' }}" class="bg-gray-700 px-8 py-1 rounded-md text-white text-lg md:text-xl lg:text-2xl hover:bg-gray-200 hover:text-black">Browse More</a>

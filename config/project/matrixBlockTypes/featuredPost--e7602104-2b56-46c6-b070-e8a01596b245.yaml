@@ -14,7 +14,16 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 409b107d-1a6a-41d2-92fe-322cb1114f01
+            fieldUid: 77875512-9b22-4334-9499-800bce93ef61
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: df752805-c64f-4306-995b-cfd317e93fe0
             instructions: null
             label: null
             required: false
@@ -25,7 +34,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  409b107d-1a6a-41d2-92fe-322cb1114f01:
+  77875512-9b22-4334-9499-800bce93ef61:
     contentColumnType: string
     fieldGroup: null
     handle: contentPost
@@ -34,10 +43,10 @@ fields:
     searchable: false
     settings:
       allowSelfRelations: false
-      limit: '4'
+      limit: ''
       localizeRelations: false
       selectionLabel: ''
-      showSiteMenu: false
+      showSiteMenu: true
       source: null
       sources:
         - 'section:00db5c32-bd52-481b-aa3c-f479d9a0dca5'
@@ -47,12 +56,12 @@ fields:
     translationKeyFormat: null
     translationMethod: site
     type: craft\fields\Entries
-  eaf3ed3d-f560-46cc-9abb-8938fc9d23dc:
+  df752805-c64f-4306-995b-cfd317e93fe0:
     contentColumnType: text
     fieldGroup: null
-    handle: header
+    handle: tailwindClass
     instructions: ''
-    name: header
+    name: 'Tailwind class'
     searchable: false
     settings:
       byteLimit: null
@@ -66,6 +75,25 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-handle: featured
-name: Featured
-sortOrder: 1
+  eaf3ed3d-f560-46cc-9abb-8938fc9d23dc:
+    contentColumnType: text
+    fieldGroup: null
+    handle: header
+    instructions: ''
+    name: Header
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: featuredPost
+name: 'Featured post'
+sortOrder: 2

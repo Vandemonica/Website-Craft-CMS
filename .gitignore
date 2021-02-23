@@ -3,3 +3,5 @@
 /vendor
 .DS_Store
 /web/assets/css/tailwind.css
+/web/assets/js/alpinejs.js
+/templates/vandebug

@@ -1,0 +1,99 @@
+field: 31889cbb-c3af-425c-9032-402eb093b350
+fieldLayouts:
+  224fc30d-9240-465b-b98c-ee88b31dc635:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: e508d988-d2ba-4766-88f4-f2949ae11421
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 4b74ed4f-1223-4140-91f8-e5d6f31ad66e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c86bd269-e0c6-495b-b465-bec0b9c18412
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  4b74ed4f-1223-4140-91f8-e5d6f31ad66e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: contentPost
+    instructions: ''
+    name: 'Content post'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: ''
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:00db5c32-bd52-481b-aa3c-f479d9a0dca5'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+  c86bd269-e0c6-495b-b465-bec0b9c18412:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tailwindClass
+    instructions: ''
+    name: 'Tailwind class'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  e508d988-d2ba-4766-88f4-f2949ae11421:
+    contentColumnType: text
+    fieldGroup: null
+    handle: header
+    instructions: ''
+    name: Header
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: specialPost
+name: 'Special post'
+sortOrder: 3

@@ -1,11 +1,11 @@
 contentColumnType: string
 fieldGroup: f9485060-f9ef-404b-8ba4-315216539b24
-handle: featuredContent
+handle: homePosts
 instructions: ''
-name: 'Featured content'
+name: 'Home posts'
 searchable: false
 settings:
-  contentTable: '{{%matrixcontent_featuredcontent}}'
+  contentTable: '{{%matrixcontent_homeposts}}'
   maxBlocks: ''
   minBlocks: ''
   propagationMethod: all

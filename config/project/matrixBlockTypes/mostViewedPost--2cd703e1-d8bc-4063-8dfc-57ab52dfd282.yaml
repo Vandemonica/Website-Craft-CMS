@@ -1,0 +1,97 @@
+field: 31889cbb-c3af-425c-9032-402eb093b350
+fieldLayouts:
+  1849a722-825e-477b-91e6-5e21d94bb7e4:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 3d03ad64-ca56-406c-92d7-db1507d6a60e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: b3718555-5a20-4e19-b09d-67d6dc20521d
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: cb8073aa-58b8-4b08-9d7d-7f7de56d35b1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  3d03ad64-ca56-406c-92d7-db1507d6a60e:
+    contentColumnType: text
+    fieldGroup: null
+    handle: header
+    instructions: ''
+    name: Header
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  b3718555-5a20-4e19-b09d-67d6dc20521d:
+    contentColumnType: integer(10)
+    fieldGroup: null
+    handle: postLimit
+    instructions: ''
+    name: 'Post limit'
+    searchable: false
+    settings:
+      decimals: 0
+      defaultValue: '4'
+      max: null
+      min: '0'
+      prefix: null
+      previewCurrency: ''
+      previewFormat: decimal
+      size: null
+      suffix: null
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Number
+  cb8073aa-58b8-4b08-9d7d-7f7de56d35b1:
+    contentColumnType: text
+    fieldGroup: null
+    handle: tailwindClass
+    instructions: ''
+    name: 'Tailwind class'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: mostViewedPost
+name: 'Most viewed post'
+sortOrder: 4

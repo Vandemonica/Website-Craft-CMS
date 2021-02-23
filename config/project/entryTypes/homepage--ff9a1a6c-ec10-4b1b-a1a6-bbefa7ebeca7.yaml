@@ -37,8 +37,12 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            heading: 'Featured post'
+            heading: 'Home structure'
             type: craft\fieldlayoutelements\Heading
+          -
+            style: tip
+            tip: 'Assemble your main homepage look'
+            type: craft\fieldlayoutelements\Tip
           -
             fieldUid: 31889cbb-c3af-425c-9032-402eb093b350
             instructions: null
