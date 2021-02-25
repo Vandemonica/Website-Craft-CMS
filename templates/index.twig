@@ -1,17 +1,19 @@
 {% extends '_layouts/base' %}
 
-{# see : https://nystudio107.com/blog/speed-up-your-craft-cms-templates-with-eager-loading #}
+{#
+see : https://nystudio107.com/blog/speed-up-your-craft-cms-templates-with-eager-loading
 {% do craft.app.elements.eagerLoadElements(
   className(entry),
   [entry],
-  ['featuredContent']
+  ['homePosts']
 ) %}
+#}
 
 {% block content %}
 
   <div style="background-image: url( '{{ entry.bannerImage.one().url ?? null }}' ); background-position: center; background-repeat: no-repeat; background-size: cover;" class="text-center">
     <div style="background-color: rgba(0, 0, 0, 0.7)" class="text-white pt-16 md:pt-20 lg:pt-24">
-      <div class="my-4">
+      <div class="my-4 mx-2 md:mx-10 lg:mx-20">
         {% include "_includes/search-bar" %}
       </div>
       <div class="bg-black bg-opacity-40 border-gray-500 border-t md:border-r md:border-l p-6 mt-10 md:mx-20 md:mt-16 lg:mx-32 lg:mt-28 xl:mx-60">
@@ -21,14 +23,13 @@
     </div>
   </div>
 
-  <div class="bg-black bg-opacity-20 space-y-4 py-6 text-center border-gray-500 border-b md:border-r md:border-l md:mx-20 lg:mx-32 xl:mx-60">
-
+  <div class="bg-black bg-opacity-20 space-y-12 py-6 text-center border-gray-500 border-b md:border-r md:border-l md:mx-20 lg:mx-32 xl:mx-60">
     {% for contentBlock in entry.homePosts.all() %}
 
 
       {% if contentBlock.type == "featuredPost" %}
         {%
-          include "_includes/home_basic" with{
+          include "_includes/home-blocks/basic" with{
             'posts': contentBlock.contentPost.with(['coverImage']).all()
           }
         %}
@@ -36,13 +37,13 @@
 
 
       {% if contentBlock.type == "paragraph" %}
-        {% include '_includes/home_paragraph' %}
+        {% include '_includes/home-blocks/paragraph' %}
       {% endif %}
 
 
       {% if contentBlock.type == "recentPost" %}
         {%
-          include '_includes/home_basic' with{
+          include '_includes/home-blocks/basic' with{
             'posts': craft.entries.section('contentPosts')
                       .with(['coverImage'])
                       .limit(contentBlock.postLimit)
@@ -54,7 +55,7 @@
 
       {% if contentBlock.type == "mostViewedPost" %}
         {%
-          include '_includes/home_basic' with{
+          include '_includes/home-blocks/basic' with{
                     'posts': craft.entryCount.entries
                     .with(['coverImage'])
                     .limit(contentBlock.postLimit)
@@ -64,9 +65,9 @@
       {% endif %}
 
 
-      {% if contentBlock.type == "specialPost" %}
+      {% if contentBlock.type == "card" %}
         {%
-          include '_includes/home_special' with{
+          include '_includes/home-blocks/card' with{
             'items': contentBlock.contentPost.with(['coverImage']).all()
           }
         %}
@@ -74,27 +75,6 @@
 
 
     {% endfor %}
-
-
-    {#
-      
-
-
-    <div class="my-2">
-      <h1 class="m-0.5 mt-4 lg:mx-5 text-xl md:text-2xl lg:text-3xl">Most Viewed</h1>
-      <div class="grid grid-cols-2 lg:grid-cols-4">
-        {% for item in topViews %}
-          {%
-            include "_includes/cover" with{
-              'content': item,
-              'margin': 'm-0.5 md:mx-auto',
-            }
-          %}
-        {% endfor %}
-      </div>
-    </div>
-    #}
-
     <div class="mt-10 mb-4 text-center">
       <a href="{{ currentSite.baseUrl~'content' }}" class="bg-gray-700 px-8 py-1 rounded-md text-white text-lg md:text-xl lg:text-2xl hover:bg-gray-200 hover:text-black">Browse More</a>
     </div>

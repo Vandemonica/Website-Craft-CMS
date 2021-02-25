@@ -22,14 +22,21 @@
 
 {% block content %}
 
-  <div class="bg-gray-700 pb-4 px-2 md:px-4 lg:px-6 pt-20">
-    {% include "_includes/search-bar" %}
-    {% if search is not empty %}
-      <div class="text-gray-300 my-2 text-sm md:text-base lg:text-lg">
-        <div class="block lg:inline">Search result for: {{ '"' ~ search ~ '"' }}</div>
-        <div class="block lg:inline">{{ category ? 'and Genre: ' ~ '"' ~ category ~ '"' : '' }}</div>
-        <div class="block lg:inline">{{ postQuery|length }} title found</div>
-      </div>
+  <div class="bg-gray-700 pb-2 px-2 md:px-4 lg:px-6 pt-16 md:pt-24 lg:pt-28 text-gray-300 text-sm md:text-base lg:text-lg">
+    {% if search is not empty or category is not empty %}
+
+      Searching for Title
+
+      {% if search is not empty %}
+        {{ '"' ~ search ~ '"' }}
+      {% endif %}
+
+      {% if category is not empty %}
+        {{ 'with ' ~ category ~ ' genres' }}
+      {% endif %}
+
+      <div class="block">Result: {{ postQuery|length }} title found</div>
+      
     {% endif %}
   </div>
 

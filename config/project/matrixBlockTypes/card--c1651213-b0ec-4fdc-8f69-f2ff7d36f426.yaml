@@ -94,6 +94,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-handle: specialPost
-name: 'Special post'
-sortOrder: 3
+handle: card
+name: Card
+sortOrder: 5

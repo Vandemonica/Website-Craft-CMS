@@ -1,18 +1,18 @@
 {% set home = currentSite.baseUrl %}
-{% set mobile = 'hidden absolute -bottom-24 text-center bg-black bg-opacity-90 w-full' %}
+{% set mobile = 'hidden absolute -bottom-48 text-center bg-black bg-opacity-90 w-full' %}
 {% set desktop = 'md:static md:w-auto md:bg-transparent md:inline md:mt-1' %}
 
 {%
   set navbar = [
     {'page': 'Home', 'url': home},
-    {'page': 'Search', 'url': home~'search'},
+    {'page': 'Search', 'search': true, 'url': home~'search'},
     {'page': 'Genre', 'url': home~'genres'},
     {'page': 'About', 'url': home~'about'},
   ]
 %}
 
-<div class="fixed z-30 w-full bg-black bg-opacity-90 text-white py-3">
-  <div class="inline italic float-left text-xl md:text-2xl lg:text-3xl pl-2 md:pl-10 lg:pl-20">
+<div class="fixed z-30 shadow-lg w-full bg-black bg-opacity-90 text-white py-3 md:py-2">
+  <div class="inline italic float-left text-xl md:text-2xl lg:text-3xl md:mt-2 pl-2 md:pl-10 lg:pl-20">
     <a class="transition duration-300 hover:text-blue-500" href="{{ home }}">{{ siteName }}</a>
   </div>
   <div id="hamburger" class="hamburger cursor-pointer inline md:hidden mt-1 float-right">
@@ -20,21 +20,27 @@
     <span id="hamtwo"></span>
     <span id="hamthree"></span>
   </div>
-  <!-- desktop -->
-  <div id="droppy" class="{{ mobile }} {{ desktop }} float-right md:pr-10 lg:pr-20">
+  <div id="droppy" x-data="{ show: false }" class="{{ mobile }} {{ desktop }} float-right py-1 md:py-0 md:pr-10 lg:pr-20">
     {% for item in navbar %}
-      <a class="block md:inline md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}">{{ item.page }}</a>
+      {% if item.page == 'Search' %}
+        <div class="block md:inline">
+
+          <button @click="show = !show" class="hidden md:inline md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" style="outline: none;">{{ item.page }}</button>
+
+          <div class="md:absolute top-16 right-4 md:text-left md:bg-black md:bg-opacity-90 md:w-2/4 md:py-2 md:px-4" :class="{ 'md:hidden': show === false }">
+            {% include "_includes/search-bar" %}
+            <a href="{{ currentSite.baseUrl ~ 'search' }}" class="text-blue-600 text-sm md:text-base lg:text-lg hover:underline hover:text-blue-400">Advanced Search</a>
+            <button @click="show = false" class="hidden md:block absolute right-4 top-0 text-xl lg:text-2xl hover:text-red-500">&#10005;</button>
+          </div>
+
+        </div>
+      {% else %}
+        <div class="block md:inline my-3 md:my-0">
+          <a class="md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}">{{ item.page }}</a>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
-  <!-- end desktop -->
-
-  <!-- untuk mobile -->
-  <!-- <div class="absolute w-full -bottom-24 text-center bg-black bg-opacity-90 text-white">
-    {% for item in navbar %}
-      <a class="block md:hidden" href="{{item.url}}">{{ item.page }}</a>
-    {% endfor %}
-  </div> -->
-  <!-- end mobile -->
 </div>
 
 

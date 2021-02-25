@@ -94,4 +94,4 @@ fields:
     type: craft\fields\PlainText
 handle: mostViewedPost
 name: 'Most viewed post'
-sortOrder: 4
+sortOrder: 3

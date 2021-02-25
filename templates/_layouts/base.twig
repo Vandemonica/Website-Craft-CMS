@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ currentSite.baseUrl }}assets/css/main.css" type="text/css">
   <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script> -->
   <script src="{{ currentSite.baseUrl }}assets/js/alpinejs.js"></script>
-<title>{{ siteName }} {{ entry.title is defined ? '| '~entry.title : '' }}</title>
+<title>{{ entry.title is defined ? entry.title~' | ' : '' }} {{ siteName }}</title>
 </head>
 <body>
 

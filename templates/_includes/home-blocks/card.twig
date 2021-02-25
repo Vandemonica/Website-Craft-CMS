@@ -19,8 +19,10 @@
           </div>
 
           <div class="px-4 pb-10 text-left text-xs md:text-sm lg:text-base">
-            <ul x-show="tabActive === 1">
+            <ul x-show="tabActive === 1" class="space-y-1">
               <h2 class="text-sm md:text-base lg:text-lg border-b border-gray-400 w-1/2 md:w-1/6">Overview</h2>
+              <li>Title: {{ item.title }}</li>
+              <li>Author: {{ item.author }}</li>
               <li>Score: &#9734;
                 {% if item.score is not null %}
                   {{ item.score }}<span> (Scored by {{ item.scoreBy|currency('USD', stripZeros=true)|replace({'$':''}) }} Users)</span>
@@ -30,15 +32,14 @@
               </li>
               <li>Genres:
                 {% for genre in item.genre.all() %}
-
-                  {{ genre.title }}
+                  <a href="{{ genre.url }}" class="md:px-2 md:py-0.5 bg-gray-200 text-blue-500 hover:bg-gray-700 hover:text-blue-300">{{ genre.title }}</a>
                 {% endfor %}
               </li>
             </ul>
 
             <div x-show="tabActive === 2" class="text-xs md:text-sm lg:text-base">
               <h2 class="text-sm md:text-base lg:text-lg border-b border-gray-400 w-1/2 md:w-1/6">Sinopsis</h2>
-              <div style="text-indent: 20px;">{{ item.paragraph|truncate(222)|striptags }}</div>
+              <div style="text-indent: 20px;">{{ item.paragraph|truncate(255)|striptags }}</div>
             </div>
           </div>
 
