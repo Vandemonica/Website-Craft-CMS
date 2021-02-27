@@ -44,6 +44,34 @@
 }
 
 
+.accordion-open{
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height .5s ease-in-out;
+}
+.accordion-closed{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s ease-in-out;
+}
+
+.accord-btn-norm{
+  -webkit-transition: .4s ease-in-out;
+  -moz-transition: .4s ease-in-out;
+  -o-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
+
+  transform: rotate(0deg);
+}
+.accord-btn-flip{
+  -webkit-transition: .4s ease-in-out;
+  -moz-transition: .4s ease-in-out;
+  -o-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
+
+  transform: rotate(180deg);
+}
+
 
 @media screen and (min-width: 1023px){
   .coverImage{

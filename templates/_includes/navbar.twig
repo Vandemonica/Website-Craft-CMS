@@ -25,9 +25,12 @@
       {% if item.page == 'Search' %}
         <div class="block md:inline">
 
-          <button @click="show = !show" class="hidden md:inline md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" style="outline: none;">{{ item.page }}</button>
+          <button @click="show = !show" @click.away="show = false" class="hidden md:inline md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" style="outline: none;"
+              :class="{'text-blue-700 text-opacity-90': show === true}">
+            {{ item.page }}
+          </button>
 
-          <div class="md:absolute top-16 right-4 md:text-left md:bg-black md:bg-opacity-90 md:w-2/4 md:py-2 md:px-4" :class="{ 'md:hidden': show === false }">
+          <div class="md:absolute top-16 right-4 md:text-left md:bg-black md:bg-opacity-90 md:w-2/4 md:py-2 md:px-4" :class="{ 'md:hidden': show === false }" x-cloak>
             {% include "_includes/search-bar" %}
             <a href="{{ currentSite.baseUrl ~ 'search' }}" class="text-blue-600 text-sm md:text-base lg:text-lg hover:underline hover:text-blue-400">Advanced Search</a>
             <button @click="show = false" class="hidden md:block absolute right-4 top-0 text-xl lg:text-2xl hover:text-red-500">&#10005;</button>
@@ -35,8 +38,10 @@
 
         </div>
       {% else %}
-        <div class="block md:inline my-3 md:my-0">
-          <a class="md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}">{{ item.page }}</a>
+        <div x-data="{ curUrl: '{{ craft.app.request.absoluteUrl }}' }" class="block md:inline my-3 md:my-0">
+          <a class="md:p-2 text-base md:text-lg lg:text-xl transition duration-300 hover:text-blue-500" href="{{item.url}}"
+            :class="{'text-blue-700 text-opacity-90': curUrl === '{{ item.url }}'}">{{ item.page }}
+          </a>
         </div>
       {% endif %}
     {% endfor %}

@@ -1,7 +1,7 @@
-<div class="block">
+<div class="block {{ contentBlock.tailwindClass|default('') }}">
   <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold">{{ contentBlock.header }}</h1>
   <div class="relative bg-black bg-opacity-80 mt-1 p-1 mx-8 sm:mx-12 md:px-2 md:mx-0 md:p-2 lg:px-4">
-    {% for item in items %}
+    {% for item in posts %}
       <div class="absolute z-10 top-0 left-0 bg-black bg-opacity-70 text-center p-1 w-full font-serif font-bold text-white text-lg md:text-xl lg:text-2xl sm:static sm:bg-transparent">
         {{ item.title }}
       </div>
@@ -19,7 +19,12 @@
           </div>
 
           <div class="px-4 pb-10 text-left text-xs md:text-sm lg:text-base">
-            <ul x-show="tabActive === 1" class="space-y-1">
+            <ul x-show="tabActive === 1" x-cloak
+              x-transition:enter="transition duration-100 transform ease-in"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:leave="hidden transition duration-100 transform ease-in"
+              x-transition:leave-end="opacity-0 scale-90"
+                class="space-y-1">
               <h2 class="text-sm md:text-base lg:text-lg border-b border-gray-400 w-1/2 md:w-1/6">Overview</h2>
               <li>Title: {{ item.title }}</li>
               <li>Author: {{ item.author }}</li>
@@ -31,15 +36,28 @@
                 {% endif %}
               </li>
               <li>Genres:
-                {% for genre in item.genre.all() %}
+                {% for genre in item.genre.limit(4).all() %}
                   <a href="{{ genre.url }}" class="md:px-2 md:py-0.5 bg-gray-200 text-blue-500 hover:bg-gray-700 hover:text-blue-300">{{ genre.title }}</a>
                 {% endfor %}
               </li>
             </ul>
 
-            <div x-show="tabActive === 2" class="text-xs md:text-sm lg:text-base">
+            <div x-show="tabActive === 2" x-cloak
+              x-transition:enter="transition duration-100 transform ease-in"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:leave="hidden transition duration-100 transform ease-in"
+              x-transition:leave-end="opacity-0 scale-90"
+                class="text-xs md:text-sm lg:text-base">
               <h2 class="text-sm md:text-base lg:text-lg border-b border-gray-400 w-1/2 md:w-1/6">Sinopsis</h2>
-              <div style="text-indent: 20px;">{{ item.paragraph|truncate(255)|striptags }}</div>
+              <div style="text-indent: 20px;">
+                {% if item.multiParagraph is not empty %}
+                  {% for text in item.multiParagraph %}
+                    {% if loop.first %} {{ text.body|truncate(255)|striptags }} {% endif %}
+                  {% endfor %}
+                {% else %}
+                  {{ item.paragraph|truncate(255)|striptags }}
+                {% endif %}
+              </div>
             </div>
           </div>
 

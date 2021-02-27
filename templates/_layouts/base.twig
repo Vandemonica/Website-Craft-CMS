@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="{{ currentSite.baseUrl }}assets/css/main.css" type="text/css">
   <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script> -->
   <script src="{{ currentSite.baseUrl }}assets/js/alpinejs.js"></script>
+  <style>
+    [x-cloak]{ display: none; }
+  </style>
 <title>{{ entry.title is defined ? entry.title~' | ' : '' }} {{ siteName }}</title>
 </head>
 <body>
